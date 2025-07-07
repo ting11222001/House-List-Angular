@@ -24,6 +24,10 @@ It's for a tutorial from angular doc called [Build your first Angular app](https
 
   `ng generate component Home --standalone --inline-template`
 
+  In short, we can write:
+
+  `ng g c details --standalone --inline-template`
+
 - Create a new interface
 
   `ng generate interface housingLocation`
