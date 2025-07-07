@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HousingLocationComponent } from '../housing-location/housing-location.component';
 import { HousingLocation } from '../housing-location';
 import { listData } from '../listData';
+import { HomeChildComponent } from '../home-child/home-child.component';
 
 /**
  * Notes:
@@ -12,7 +13,7 @@ import { listData } from '../listData';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, HousingLocationComponent],
+  imports: [CommonModule, HousingLocationComponent, HomeChildComponent],
   template: `
     <section>
       <form>
@@ -22,10 +23,20 @@ import { listData } from '../listData';
     </section>
     <section class="results">
       <app-housing-location *ngFor="let housingLocation of housingLocationList" [housingLocation]="housingLocation"></app-housing-location>
+      <app-home-child [message]="message" (messageEvent)="receiveMessage($event)"></app-home-child>
+      <p>
+        Message from Child:{{ messageFromChild }}
+      </p>
     </section>
   `,
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
   housingLocationList: HousingLocation[] = listData;
+  message = 'Hello from Parent!';
+  messageFromChild = '';
+
+  receiveMessage(newMessage: string): void {
+    this.messageFromChild = newMessage;
+  }
 }
