@@ -1,6 +1,6 @@
 # Angular-Homes-App
 
-This project follows the [Build your first Angular app](https://angular.dev/tutorials/first-app) tutorial provided by the official Angular documentation. While the tutorial is a couple of years old, it still provides a solid foundation for understanding how Angular works, covering key concepts like components, services, data binding, and routing.
+This project follows the [Build your first Angular app](https://angular.dev/tutorials/first-app) tutorial provided by the official Angular documentation. While the tutorial is a couple of years old (Angular 16), it still provides a solid foundation for understanding how Angular works, covering key concepts like components, services, data binding, and routing.
 
 ## Table of Contents
 
