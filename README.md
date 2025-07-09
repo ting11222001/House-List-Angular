@@ -2,6 +2,8 @@
 
 It's for a tutorial from angular doc called [Build your first Angular app](https://angular.dev/tutorials/first-app).
 
+It's a 2-years old tutorial, but I think the concept is great for building a basic knowledge of how Angular works.
+
 - Install Angular
 
   `npm install -g @angular/cli`
@@ -35,3 +37,7 @@ It's for a tutorial from angular doc called [Build your first Angular app](https
 - App data from [here](https://gist.github.com/MarkTechson/efe8a9d4727ef33949b78812e66db082).
 
 - App styles from [here](https://gist.github.com/MarkTechson/fa601fdc856d26b3bfa5030dae147f00).
+
+- Create a new service
+
+  `ng generate service housing`
