@@ -44,4 +44,4 @@ It's a 2-year-old tutorial, but I think the concept is great for building a basi
 
 - Demo
 
-![Screenshot of home page](/assets/home-page.png)
+![Screenshot of home page](src/assets/home-page.png)
