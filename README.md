@@ -2,7 +2,7 @@
 
 It's for a tutorial from angular doc called [Build your first Angular app](https://angular.dev/tutorials/first-app).
 
-It's a 2-years old tutorial, but I think the concept is great for building a basic knowledge of how Angular works.
+It's a 2-year-old tutorial, but I think the concept is great for building a basic knowledge of how Angular works.
 
 - Install Angular
 
@@ -41,3 +41,7 @@ It's a 2-years old tutorial, but I think the concept is great for building a bas
 - Create a new service
 
   `ng generate service housing`
+
+- Demo
+
+![Screenshot of home page](/assets/home-page.png)
