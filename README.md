@@ -14,6 +14,23 @@ This project follows the [Build your first Angular app](https://angular.dev/tuto
 
 ![Screenshot of home page](src/assets/home-page.png)
 
+### Run this project locally
+
+After downloading, navigate to the project directory:
+```bash
+cd House-List-Angular
+```
+
+Run the Angular CLI server:
+```bash
+ng serve
+```
+
+Run the json server:
+```bash
+json-server --watch db.json
+```
+
 ## Installation
 
 ### Install Angular CLI
