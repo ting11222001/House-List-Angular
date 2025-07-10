@@ -17,6 +17,8 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
  * [formGroup] is a property binding which can be used to bind a formGroup to a <form>.
  * (submit) is an event binding which can be used to bind to a click event.
  * The ?? operator is called the nullish coalescing operator. If the value on the left hand side is null or undefined, then the value on the right hand side is used.
+ * 
+ * Replace this.housingLocation = this.housingService.getHousingLocationById(housingLocationId) with a new HTTP request.
  */
 @Component({
   selector: 'app-details',
@@ -70,7 +72,12 @@ export class DetailsComponent {
   constructor() {
     // this.housingLocationId = Number(this.route.snapshot.params['id']);
     const housingLocationId = Number(this.route.snapshot.params['id']);
-    this.housingLocation = this.housingService.getHousingLocationById(housingLocationId);
+    // this.housingLocation = this.housingService.getHousingLocationById(housingLocationId);
+    this.housingService.getHousingLocationById(housingLocationId).then(
+      (housingLocation: HousingLocation | undefined) => {
+        this.housingLocation = housingLocation;
+      }
+    );
   }
 
   submitApplication() {

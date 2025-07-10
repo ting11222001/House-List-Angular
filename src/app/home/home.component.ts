@@ -11,6 +11,13 @@ import { HousingService } from '../housing.service';
  * "let housingLocation of housingLocationList" of *ngFor is called Angular template syntax, which will create a template varaible called housingLocation.
  * [housingLocation] is property binding, meaning it's HousingLocationComponent.housingLocation, and "housingLocation" is the housingLocation variable from HomeComponent.
  * Replace housingLocationList: HousingLocation[] = listData; with housingLocationList: HousingLocation[] = []; so that the mock data is now coming from HousingService instead of listData (a export const file).
+ * 
+ * Replace this.housingLocationList = this.housingService.getAllHousingLocations(); with the new HTTP service - use the returned Promise to update the housingLocationList property.
+ * 
+ * To make the filter at the top work, we need to retrieve data from the filter in the template for this component.
+ * 1. Use a template variable - #filter (the # creates a template variable called "filter").
+ * 2. filter.value: this value is a property of the input HTML element. This allows to pass the value in the input elemnt directly into our component class.
+ * 3. Replace let housingLocation of housingLocationList in the ngFor with let housingLocation of filteredLocationList.
  */
 @Component({
   selector: 'app-home',
@@ -19,12 +26,12 @@ import { HousingService } from '../housing.service';
   template: `
     <section>
       <form>
-        <input type="text" placeholder="Filter by city">
-        <button class="primary" type="button">Search</button>
+        <input type="text" placeholder="Filter by city" #filter>
+        <button class="primary" type="button" (click)="filterResults(filter.value)">Search</button>
       </form>
     </section>
     <section class="results">
-      <app-housing-location *ngFor="let housingLocation of housingLocationList" [housingLocation]="housingLocation"></app-housing-location>
+      <app-housing-location *ngFor="let housingLocation of filteredLocationList" [housingLocation]="housingLocation"></app-housing-location>
       <app-home-child [message]="message" (messageEvent)="receiveMessage($event)"></app-home-child>
       <p>
         Message from Child:{{ messageFromChild }}
@@ -37,13 +44,30 @@ export class HomeComponent {
   // housingLocationList: HousingLocation[] = listData;
   housingLocationList: HousingLocation[] = [];
   housingService: HousingService = inject(HousingService);
-  message = 'Hello from Parent!';
+  filteredLocationList: HousingLocation[] = [];
 
   // For input and output practice with home-child component
+  message = 'Hello from Parent!';
   messageFromChild = '';
 
   constructor() {
-    this.housingLocationList = this.housingService.getAllHousingLocations();
+    // this.housingLocationList = this.housingService.getAllHousingLocations();
+    this.housingService.getAllHousingLocations().then(
+      (housingLocationList: HousingLocation[]) => {
+        this.housingLocationList = housingLocationList;
+        this.filteredLocationList = housingLocationList;
+      }
+    );
+  }
+
+  filterResults(text: string) {
+    if (!text) {
+      this.filteredLocationList = this.housingLocationList; // this allows users to clear the search box and see all the housing locations.
+    }
+    // actual filter logic here:
+    this.filteredLocationList = this.housingLocationList.filter(
+      housingLocation => housingLocation?.city.toLowerCase().includes(text.toLowerCase())
+    );
   }
 
   // For input and output practice with home-child component

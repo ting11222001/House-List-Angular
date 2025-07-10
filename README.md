@@ -38,6 +38,27 @@ Install the required packages:
 npm install
 ```
 
+### Setup and run a live endpoint using json-server
+
+```bash
+npm install -g json-server
+```
+
+Create an empty json object in this file with a property called 'locations' and paste the array data from the housing.service:
+```bash
+touch db.json
+```
+
+Run the json server:
+```bash
+json-server --watch db.json
+```
+
+Once it starts, there will be a local URL. It should print the data we have in the browser:
+```bash
+http://localhost:3000/locations
+```
+
 ## Usage
 
 ### Run the Application
